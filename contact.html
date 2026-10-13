@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
   <head>
-    <title>Sanke - Bootstrap Version</title>
+    <title>Sanke - get in touch</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -58,28 +58,155 @@
     <main>
       <section class="hero">
         <div class="container">
-          <div class="row g-5"> // g-5 sets both horizontal and vertical gutters to be 3rem
+          <div class="row g-5">
 
             <!-- Left column -->
-             <div class="col-lg-5">
-                <span class="eyebrow">Let's talk.</span>
-                <h1 class="hero-title">Get in Touch</h1>
-                <p class="hero-subtitle">
-                    Have a book recommendation, a Puzzle to share, or a Web idea? I'd love to hear it.
-                </p>
+            <div class="col-lg-5">
+              <span class="eyebrow">Let's talk.</span>
+              <h1 class="hero-title">Get in Touch</h1>
+              <p class="hero-subtitle">
+                Have a book recommendation, a Puzzle to share, or a Web idea?
+                I'd love to hear it.
+              </p>
 
-                <div class="mt-4">
-
-                    <div class="topic-card">
-                        <div class="topic-icon">
-                            <i ></i>
-                        </div>
-                    </div>
+              <div class="mt-4 d-flex flex-column gap-3">
+                <div class="d-flex align-items-start gap-3">
+                  <span class="fs-4">📚</span>
+                  <div>
+                    <strong>Books</strong>
+                    <p class="mb-0 text-muted small">
+                      Good reads, hidden gems, or perspectives to explore.
+                    </p>
+                  </div>
                 </div>
-             </div>
+                <div class="d-flex align-items-start gap-3">
+                  <span class="fs-4">💻</span>
+                  <div>
+                    <strong>Technology</strong>
+                    <p class="mb-0 text-muted small">
+                      Something creative about tech
+                    </p>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start gap-3">
+                  <span class="fs-4">🧩</span>
+                  <div>
+                    <strong>Puzzles</strong>
+                    <p class="mb-0 text-muted small">
+                      Logic, math, or interesting problems to think about.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-             <!-- Right column -->
-              <div class="col-lg-7"></div>
+            <!-- Right column -->
+            <div class="col-lg-7">
+              <form id="contact-form" novalidate>
+                <div class="row g-3 mb-3">
+                  <div class="col-sm-6">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      placeholder="Jane Doe"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="jane@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="reason" class="form-label"
+                    >Reason for contacting me</label
+                  >
+                  <select name="reason" id="reason" class="form-select">
+                    <option value="" disabled selected>Choose a reason</option>
+                    <option value="technology">Discuss a Technology</option>
+                    <option value="book">Recommend a Book</option>
+                    <option value="puzzle">Recommend a Puzzle</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Preferred Response</label>
+                  <div class="d-flex gap-4">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="response"
+                        id="responseEmail"
+                        value="email"
+                        checked
+                      />
+                      <label class="form-check-label" for="responseEmail"
+                        >Email</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="response"
+                        id="responseNone"
+                        value="none"
+                      />
+                      <label class="form-check-label" for="responseNone"
+                        >No response needed</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div id="topics-group" class="mb-3 d-none">
+                  <label class="form-label">Topics you are interested in</label>
+                  <div id="topics"></div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Write your message here..."
+                    maxlength="300"
+                    required
+                  ></textarea>
+                  <div class="form-text text-end">
+                    <span id="char-count">0</span>/300
+                  </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                  <button type="reset" class="btn btn-outline-secondary">
+                    Clear Form
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Send Message
+                  </button>
+                </div>
+
+                <div
+                  id="form-message"
+                  class="alert alert-success mt-3 d-none"
+                ></div>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </main>
