@@ -1,0 +1,106 @@
+.section-accent {
+  color: #74c7ec;
+}
+a {
+  color: #74c7ec;
+}
+
+a:hover {
+  color: #89b4fa;
+}
+
+#quote-author {
+  color: #74c7ec;
+}
+
+
+/* learning section */
+.code-block {
+    background-color: #0F1119 !important;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.code-dots {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.code-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #2A2D3E;
+}
+
+.code-block pre {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: #CDD6F4;
+    white-space: pre-wrap;
+}
+
+.ct-blue {
+    color: #89B4FA;
+}
+
+.ct-green {
+    color: #94E2D5;
+}
+
+.learning-text h2 {
+    font-size: 2rem;
+    color: #CDD6F4;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.learning-text h4 {
+    font-size: 0.75rem;
+    color: #CDD6F4;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.learning-text p {
+    font-size: 1rem;
+    color: #8892AA;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.learning-text a {
+    color: #74C7EC;
+    text-decoration: none;
+}
+
+.learning-text a:hover {
+    text-decoration: underline;
+    color: #89B4FA;
+}
+
+/* Hobby cards hover effect */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Quote card accent */
+#quote-text {
+    color: #CDD6F4;
+    line-height: 1.7;
+}
+
+#quote-author {
+    color: #74C7EC;
+    font-size: 0.9rem;
+}
