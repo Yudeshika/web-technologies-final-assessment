@@ -79,7 +79,7 @@ function renderBooks(books) {
     });
 }
 
-function searchBooks(query, field, page) {
+function searchBooks(query, field, page, label) {
     $("#results-grid").html('<p class="text-muted">Searching...</p>');
     $("#pagination").addClass("d-none");
 
@@ -87,7 +87,7 @@ function searchBooks(query, field, page) {
         totalPages = Math.ceil(data.numFound / RESULTS_PER_PAGE);
 
         $("#results-count")
-        .text(`Search results for "${query}" — ${data.numFound} books found`)
+        .text(label || `Search results for "${query}" — ${data.numFound} books found`)
         .removeClass("d-none");
 
         renderBooks(data.docs);
@@ -125,4 +125,9 @@ $(document).ready(function () {
         window.scrollTo(0, 0);
       }
     });
+
+    // load featured books on page load
+    currentQuery = "classic fiction";
+    currentSearchBy = "q";
+    searchBooks(currentQuery, currentSearchBy, 1, "Popular books to explore");
 })

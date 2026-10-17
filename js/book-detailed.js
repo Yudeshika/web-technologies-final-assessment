@@ -1,3 +1,32 @@
+// display truncated text to keep the design and display a glance of data available easily
+function truncateText(elementId, fullText, maxLength) {
+    if (fullText.length <= maxLength) {
+        $("#" + elementId).text(fullText);
+        return;
+    }
+
+    const shortText = fullText.slice(0, maxLength) + "...";
+
+    $("#" + elementId).html(
+        shortText + ' <a href="#" class="read-more-btn">Read more</a>'
+    );
+
+    $("#" + elementId).on("click", ".read-more-btn", function (e) {
+        e.preventDefault();
+        const isExpanded = $(this).text() === "Read less";
+
+        if (isExpanded) {
+            $("#" + elementId).html(
+                shortText + ' <a href="#" class="read-more-btn">Read more</a>'
+            );
+        } else {
+            $("#" + elementId).html(
+                fullText + ' <a href="#" class="read-more-btn">Read less</a>'
+            );
+        }
+    });
+}
+
 $(document).ready(function () {
   // read the book key from the url
   const params = new URLSearchParams(window.location.search);
@@ -15,7 +44,7 @@ $(document).ready(function () {
   // fetch book data from the open library api-
   $.getJSON("https://openlibrary.org" + key + ".json", function (data) {
     // title
-    $("#book-title").text(data.title || "Unknow Title");
+    $("#book-title").text(data.title || "Unknown Title");
 
     // Year
     if (data.first_publish_date) {
@@ -27,8 +56,9 @@ $(document).ready(function () {
       typeof data.description === "object"
         ? data.description.value
         : data.description || "No description available.";
-    $("#book-description").text(description);
-    $("#about-book").text(description);
+
+    truncateText("book-description", description, 500);
+    truncateText("about-book", description, 300);
 
     // cover
     if (data.covers && data.covers.length > 0) {
@@ -54,7 +84,7 @@ $(document).ready(function () {
       $.getJSON(
         "https://openlibrary.org" + authorKey + ".json",
         function (author) {
-          $("#book-author").text(author.name || "Unknow AUthor");
+          $("#book-author").text(author.name || "Unknown Author");
           $("#author-name").text(author.name || "Unknown Author");
 
           // author bio. can be a string or object
@@ -62,7 +92,8 @@ $(document).ready(function () {
             typeof author.bio === "object"
               ? author.bio.value
               : author.bio || "No bio-data available.";
-          $("#author-bio").text(bio);
+
+          truncateText("author-bio", bio, 200);
 
           // author photo
           if (author.photos && author.photos.length > 0) {
