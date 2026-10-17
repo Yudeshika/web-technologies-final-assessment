@@ -134,13 +134,13 @@ a:hover {
 }
 
 .learning-text a {
-  color: var(--color-text);
+  color: var(--color-accent);
   text-decoration: none;
 }
 
 .learning-text a:hover {
   text-decoration: underline;
-  color: var(--color-text);
+  color: var(--color-accent-hover);
 }
 
 /* Hobby cards hover effect */
