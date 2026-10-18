@@ -1,3 +1,5 @@
+const OPENLIBRARY_BASE_URL = "https://openlibrary.org";
+
 // display truncated text to keep the design and display a glance of data available easily
 function truncateText(elementId, fullText, maxLength) {
     if (fullText.length <= maxLength) {
@@ -39,10 +41,10 @@ $(document).ready(function () {
   }
 
   // set the open library link
-  $("#open-library-link").attr("href", "https://openlibrary.org" + key);
+  $("#open-library-link").attr("href", OPENLIBRARY_BASE_URL + key);
 
   // fetch book data from the open library api-
-  $.getJSON("https://openlibrary.org" + key + ".json", function (data) {
+  $.getJSON(OPENLIBRARY_BASE_URL + key + ".json", function (data) {
     // title
     $("#book-title").text(data.title || "Unknown Title");
 
@@ -82,7 +84,7 @@ $(document).ready(function () {
       const authorKey = data.authors[0].author.key;
 
       $.getJSON(
-        "https://openlibrary.org" + authorKey + ".json",
+        OPENLIBRARY_BASE_URL + authorKey + ".json",
         function (author) {
           $("#book-author").text(author.name || "Unknown Author");
           $("#author-name").text(author.name || "Unknown Author");

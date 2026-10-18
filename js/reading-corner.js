@@ -1,4 +1,5 @@
 const RESULTS_PER_PAGE = 12;
+const OPENLIBRARY_BASE_URL = "https://openlibrary.org";
 let currentPage = 1;
 let currentQuery = "";
 let currentSearchBy = "q";
@@ -7,7 +8,7 @@ let totalPages = 1;
 function buildUrl(query, field, page) {
     const offset = (page - 1) * RESULTS_PER_PAGE;
     const sort = $("#sort-by").val();
-    let url = `https://openlibrary.org/search.json?${field}=${encodeURIComponent(query)}&limit=${RESULTS_PER_PAGE}&offset=${offset}&fields=key,title,author_name,first_publish_year,cover_i`;
+    let url = `${OPENLIBRARY_BASE_URL}/search.json?${field}=${encodeURIComponent(query)}&limit=${RESULTS_PER_PAGE}&offset=${offset}&fields=key,title,author_name,first_publish_year,cover_i`;
     if (sort) url +=  `&sort=${sort}`;
     return url;
 }
