@@ -64,26 +64,62 @@
             <form id="search-form" class="mt-4">
 
                 <div class="row g-2">
-                    <div class="col-md-5">
+                    <div class="col-md-4 col-sm-6">
                         <label for="search-input">Search books</label>
-                        <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search Books...." required>
+                        <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search Books....">
                     </div>
-                    <!-- <div class="col-md-2">
-                        <label for="search-by">Search by</label>
-                        <select class="form-select" name="search-by" id="search-by">
-                        <option value="q">All</option>
-                        <option value="title">Title</option>
-                        <option value="author">Author</option>
+                    <div class="col-md-4 col-sm-6">
+                      <div>
+                        <label for="genre-filter">Genre Filter</label>
+                        <select id="genre-filter" class="form-select">
+                          <option value="">All Genres</option>
+                          <option value="fiction">Fiction</option>
+                          <option value="fantacy">Fantacy</option>
+                          <option value="science_fiction">Science Fiction</option>
+                          <option value="mystery">Mystery</option>
+                          <option value="biography">Biography</option>
+                          <option value="children">Children</option>
+                          <option value="romance">Romance</option>
+                          <option value="horror">Horror</option>
                         </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+
                     </div>
                     <div class="col-md-2">
                         <label for="sort-by">Sort by</label>
                         <select class="form-select" name="sort-by" id="sort-by">
-                        <option value="">Relevance</option>
-                        <option value="new">Newest</option>
-                        <option value="old">Oldest</option>
+                          <option value="">Relevance</option>
+                          <option value="new">Newest</option>
+                          <option value="old">Oldest</option>
+                          <option value="rating">Highest Rating</option>
+                          <option value="readinglog">Most Popular</option>
+                          <option value="title">Title A-Z</option>
                         </select>
-                    </div> -->
+                    </div>
+                    <div class="col-md-10 col-sm-12">
+                        <label class="form-label">Year: <span id="year-filter-label">2000</span></span></label>
+                        <div class="year-wrapper">
+                          <input type="range" id="year-filter" min="1900" max="2026" value="2000" list="year-ticks"/>
+                          <datalist id="year-ticks">
+                            <option value="1900"></option>
+                            <option value="1925"></option>
+                            <option value="1950"></option>
+                            <option value="1975"></option>
+                            <option value="2000"></option>
+                            <option value="2025"></option>
+                          </datalist>
+                          <div class="year-labels">
+                            <span>1900</span>
+                            <span>1925</span>
+                            <span>1950</span>
+                            <span>1975</span>
+                            <span>2000</span>
+                            <span>2025</span>
+                          </div>
+                        </div>
+                    </div>
                     <div class="col-md-2">
                         <label for="search-input"></label>
                         <button type="submit" class="btn btn-outline-light w-100">Search</button>

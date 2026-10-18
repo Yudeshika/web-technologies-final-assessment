@@ -8,8 +8,13 @@ let totalPages = 1;
 function buildUrl(query, field, page) {
     const offset = (page - 1) * RESULTS_PER_PAGE;
     const sort = $("#sort-by").val();
-    let url = `${OPENLIBRARY_BASE_URL}/search.json?${field}=${encodeURIComponent(query)}&limit=${RESULTS_PER_PAGE}&offset=${offset}&fields=key,title,author_name,first_publish_year,cover_i`;
+    const genre = $("#genre-filter").val();
+    const year = $("#year-filter").val();
+    const search = (query) ? `${field}=${encodeURIComponent(query)}&` : "q=classic_fiction&";
+    let url = `${OPENLIBRARY_BASE_URL}/search.json?${search}limit=${RESULTS_PER_PAGE}&offset=${offset}&fields=key,title,author_name,first_publish_year,cover_i`;
     if (sort) url +=  `&sort=${sort}`;
+    if (genre) url += `&subject=${genre}`;
+    if (year) url += `&first_publish_year=${year}`;
     return url;
 }
 
@@ -22,7 +27,7 @@ function renderBooks(books) {
     }
 
     $.each(books, function (i, book) {
-        const cover = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : "images/no-cover.png";
+        const cover = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : "images/no-image.jpg";
 
         const author = book.author_name ? book.author_name[0] : "Unknown author";
 
@@ -109,6 +114,19 @@ $(document).ready(function () {
         currentSearchBy = $("#search-by").val();
         currentPage = 1;
         searchBooks(currentQuery, currentSearchBy, currentPage);
+    });
+
+    $("#sort-by").on("change", function () {                                                                                                                                                                                
+        if (currentQuery) {                                                                                                                                                                                                 
+            searchBooks(currentQuery, currentSearchBy, 1);                                                                                                                                                                  
+        }                                                                                                                                                                                                                   
+    });
+
+    $("#year-filter").on("change", function () {                                                                                                                                                                                
+        $("#year-filter-label").text($(this).val());
+        if(currentQuery) {
+            searchBooks(currentQuery, currentSearchBy, 1);
+        }                                                                                                                                                                                                            
     });
 
     $("#prev-btn").on("click", function () {

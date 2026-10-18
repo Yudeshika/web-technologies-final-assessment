@@ -167,3 +167,28 @@ a:hover {
   color: var(--color-text);
   font-size: 0.9rem;
 }
+
+/* Year Filter */
+#year-filter::-webkit-slider-runnable-track {                                                                                                                                                                           
+    background: var(--color-border);                                                                                                                                                                                    
+}                                                                                                                                                                                                                       
+                                                                                                                                                                                                                          
+#year-filter::-moz-range-track {                                                                                                                                                                                        
+    background: var(--color-border);                                                                                                                                                                                  
+}
+
+.year-wrapper {
+    width: 100%;
+}
+
+.year-wrapper input[type="range"] {
+    width: 100%;
+}
+
+.year-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    margin-top: 5px;
+}
